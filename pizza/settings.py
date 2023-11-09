@@ -128,6 +128,3 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-API_KEY="test_9ad883555f7a9f48a86a9d4d701"
-AUTH_TOKEN="test_0e337ac9bdf84e79c5664b82795"
-SALT="4e3bef0fb6c54decbd7b2316c11ecaf1"
