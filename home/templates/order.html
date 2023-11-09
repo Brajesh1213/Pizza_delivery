@@ -1,0 +1,32 @@
+{% extends "indicator.html" %}
+
+{% block start %}
+<div class="container card shadow-lg mt-5">
+    <h2 class="text-center mt-3 mb-4">Your Cart</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">S.No.</th>
+                <th scope="col">Total</th>
+                <th scope="col">Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+            <tr>
+                
+                <th scope="row">{{ forloop.counter }}</th>               
+                <td>{{ order.get_cart_total }}</td>
+                <td>True</td>
+               
+                <td>₹{{ order.created_at }}</td>
+            </tr>
+            {% endfor %}
+          
+        </tbody>
+    </table>
+    <!-- <div class="text-center mt-4">
+        <a href="#" class="btn btn-primary">Checkout</a>
+    </div> -->
+</div>
+{% endblock %}

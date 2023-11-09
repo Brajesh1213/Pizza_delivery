@@ -1,0 +1,55 @@
+{% extends "indicator.html" %}
+
+{% block start %}
+<div class="container card shadow-lg mt-5">
+    <h2 class="text-center mt-3 mb-4">Your Cart</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Item</th>
+                <th scope="col">Action</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cartitem in cart.cart_items.all %}
+            <tr>
+                
+                <th scope="row">{{ forloop.counter }}</th>
+                <th>
+                    <a href="{% url 'remove_cart_items' cartitem.uid %}" class="btn btn-danger">
+                        <i class='bx bx-message-alt-x'></i></a>
+                </th>
+                <td>
+                    <img src="/media/{{ cartitem.pizza.image }}" style="max-width: 100px; height: auto;" alt="{{ cartitem.pizza.pizza_name }}">
+                </td>
+                <td>{{ cartitem.pizza.pizza_name }}</td>
+                <td>₹{{ cartitem.pizza.price }}</td>
+                <td>1</td>
+                <td>₹{{ cartitem.pizza.price }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <b>Grand Total</b>
+                    <br>
+                    <p>₹{{ cart.get_cart_total|default:0 }}</p>
+                    <a href="{{payment_url}}" class="btn btn-primary">Pay Now</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-center mt-4">
+        <a href="#" class="btn btn-primary">Checkout</a>
+    </div>
+</div>
+{% endblock %}
